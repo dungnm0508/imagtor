@@ -29,7 +29,11 @@
 </head>
 <body class="bg-dark">
 
-
+    @if($message =Session::get('status'))
+    <div class="alert alert-success" role="alert">
+     {{$message}}
+    </div>
+    @endif
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
             <div class="login-content">
@@ -39,14 +43,15 @@
                     </a>
                 </div>
                 <div class="login-form">
-                    <form>
+                    <form action="post-login" method="post">
+                        @csrf
                         <div class="form-group">
                             <label>Email address</label>
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input type="email" class="form-control" placeholder="Email" name="txtEmail" required>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" class="form-control" placeholder="Password" name="txtPass" required>
                         </div>
                         <div class="checkbox">
                             <label>
@@ -65,7 +70,7 @@
                             </div>
                         </div>
                         <div class="register-link m-t-15 text-center">
-                            <p>Don't have account ? <a href="#"> Sign Up Here</a></p>
+                            <p>Don't have account ? <a href="{{route('getRegisterForm')}}"> Sign Up Here</a></p>
                         </div>
                     </form>
                 </div>
@@ -78,7 +83,14 @@
     <script src="{{asset('app/admin/assets/js/popper.min.js')}}"></script>
     <script src="{{asset('app/admin/assets/js/plugins.js')}}"></script>
     <script src="{{asset('app/admin/assets/js/main.js')}}"></script>
-
+    
+    <script type="text/javascript">
+        var offset = new Date().getTimezoneOffset();
+        var o  = Math.abs(offset)
+        var offset = (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2);
+        
+        console.log('offset: ',offset);
+    </script>
 
 </body>
 </html>
