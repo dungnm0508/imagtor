@@ -29,7 +29,7 @@
 </head>
 <body class="bg-dark">
     @if($message =Session::get('status'))
-    <div class="alert alert-primary" role="alert">
+    <div class="alert alert-danger" role="alert">
      {{$message}}
     </div>
     @endif
