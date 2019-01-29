@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//test send notification
+
+Route::get('sendmessage',['as'=>'send','uses'=>'SendMessageController@getsendmessage']);
+
+Route::post('postMessage',['as'=>'postMessage','uses'=>'SendMessageController@postMessage']);
+
+Route::get('testMessage',['as'=>'gettestMessage','uses'=>'SendMessageController@gettestMessage']);
 // authentication
 
 Route::get('login',['as'=>'getLoginForm','uses'=>'LoginController@getLoginForm']);
@@ -24,3 +31,12 @@ Route::get('register',['as'=>'getRegisterForm','uses'=>'LoginController@getRegis
 Route::post('post-register',['as'=>'postRegister','uses'=>'LoginController@postRegister']);
 
 Route::post('post-login',['as'=>'postLogin','uses'=>'LoginController@postLogin']);
+
+
+
+// admin
+
+Route::prefix('admin')->group(function () {
+    Route::get('dashboard', ['as'=>'getAdminDashboard','uses'=>'AdminController@getAdminDashboard']);
+
+});
