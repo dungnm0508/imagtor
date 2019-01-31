@@ -32,6 +32,8 @@ Route::post('post-register',['as'=>'postRegister','uses'=>'LoginController@postR
 
 Route::post('post-login',['as'=>'postLogin','uses'=>'LoginController@postLogin']);
 
+Route::get('logout',['as'=>'getLogout','uses'=>'LoginController@getLogout']);
+
 
 
 // admin

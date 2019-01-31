@@ -46,9 +46,22 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             // Authentication passed...
             // return redirect()->intended('dashboard');
-            return Auth::user()->role;
+            switch (Auth::user()->role) {
+                case 0:
+                    # code...
+                    return redirect()->route('getAdminDashboard')->with('status','Log in succeed! Welcome to Imagtor Admin Page');
+                    break;
+                default:
+                    # code...
+                    break;
+            }
+
         }else{
         	return 'fail';
         }
+    }
+    public function getLogout(){
+        Auth::logout();
+        return redirect()->route('getLoginForm');
     }
 }
