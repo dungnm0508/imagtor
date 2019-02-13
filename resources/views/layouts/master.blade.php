@@ -24,6 +24,8 @@
     <link href="{{asset('app/admin/assets/css/lib/vector-map/jqvmap.min.css')}}" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    @yield('css-link')
+    
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
@@ -47,23 +49,13 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="{{route('getAdminDashboard')}}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
-                    <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
+                    <h3 class="menu-title">Staff</h3>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Account Management</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Badges</a></li>
-                            <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Tabs</a></li>
-                            <li><i class="fa fa-share-square-o"></i><a href="ui-social-buttons.html">Social Buttons</a></li>
-                            <li><i class="fa fa-id-card-o"></i><a href="ui-cards.html">Cards</a></li>
-                            <li><i class="fa fa-exclamation-triangle"></i><a href="ui-alerts.html">Alerts</a></li>
-                            <li><i class="fa fa-spinner"></i><a href="ui-progressbar.html">Progress Bars</a></li>
-                            <li><i class="fa fa-fire"></i><a href="ui-modals.html">Modals</a></li>
-                            <li><i class="fa fa-book"></i><a href="ui-switches.html">Switches</a></li>
-                            <li><i class="fa fa-th"></i><a href="ui-grids.html">Grids</a></li>
-                            <li><i class="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Typography</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{route('getListStaff')}}">List account</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -81,7 +73,7 @@
                         </ul>
                     </li>
 
-                    <h3 class="menu-title">Icons</h3><!-- /.menu-title -->
+                    <h3 class="menu-title">Icons</h3>
 
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Icons</a>
@@ -109,7 +101,7 @@
                             <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
                         </ul>
                     </li>
-                    <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
+                    <h3 class="menu-title">Extras</h3>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -291,31 +283,9 @@
     <script src="{{asset('app/admin/assets/js/main.js')}}"></script>
 
 
-    <script src="{{asset('app/admin/assets/js/lib/chart-js/Chart.bundle.js')}}"></script>
-    <script src="{{asset('app/admin/assets/js/dashboard.js')}}"></script>
-    <script src="{{asset('app/admin/assets/js/widgets.js')}}"></script>
-    <script src="{{asset('app/admin/assets/js/lib/vector-map/jquery.vmap.js')}}"></script>
-    <script src="{{asset('app/admin/assets/js/lib/vector-map/jquery.vmap.min.js')}}"></script>
-    <script src="{{asset('app/admin/assets/js/lib/vector-map/jquery.vmap.sampledata.js')}}"></script>
-    <script src="{{asset('app/admin/assets/js/lib/vector-map/country/jquery.vmap.world.js')}}"></script>
-    <script>
-        ( function ( $ ) {
-            "use strict";
-
-            jQuery( '#vmap' ).vectorMap( {
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: [ '#1de9b6', '#03a9f5' ],
-                normalizeFunction: 'polynomial'
-            } );
-        } )( jQuery );
-    </script>
+    @yield('scripts')
+    
+    
 
 </body>
 </html>

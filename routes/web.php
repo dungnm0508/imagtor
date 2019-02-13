@@ -41,4 +41,6 @@ Route::get('logout',['as'=>'getLogout','uses'=>'LoginController@getLogout']);
 Route::prefix('admin')->group(function () {
     Route::get('dashboard', ['as'=>'getAdminDashboard','uses'=>'AdminController@getAdminDashboard']);
 
+    Route::get('liststaff', ['as'=>'getListStaff','uses'=>'AdminController@getListStaff']);
+
 });

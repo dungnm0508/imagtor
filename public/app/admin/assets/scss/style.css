@@ -2238,3 +2238,8 @@ header .form-inline {
           padding: 5px; } }
 
 /*# sourceMappingURL=style.css.map */
+#btn-insert-staff{
+  position: absolute;
+  top: 5px;
+  right: 35px;
+}
