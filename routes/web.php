@@ -43,4 +43,6 @@ Route::prefix('admin')->group(function () {
 
     Route::get('liststaff', ['as'=>'getListStaff','uses'=>'AdminController@getListStaff']);
 
+    route::post('registerStaff',['as'=>'postRegisterStaff','uses'=>'AdminController@postRegisterStaff']);
+
 });

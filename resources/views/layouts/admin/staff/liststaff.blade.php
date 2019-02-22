@@ -63,7 +63,8 @@
                               <div class="card">
                                 <div class="card-header">Register Form</div>
                                 <div class="card-body card-block">
-                                  <form action="" method="post" class="">
+                                  <form  method="post" class="form-register-staff">
+                                    <meta name="csrf-token" content="{{ csrf_token() }}" />
                                     <div class="form-group">
                                       <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-user"></i></div>
@@ -82,7 +83,19 @@
                                         <input type="password" id="password" name="password" placeholder="Password" class="form-control">
                                       </div>
                                     </div>
-                                    <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Submit</button></div>
+                                    <div class="form-group">
+                                      <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                                        <select name="selectRole" id="selectRole" class="form-control">
+                                            <option value="0">Please select role</option>
+                                            <option value="1">Supporter</option>
+                                            <option value="2">Technician</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                    <div class="form-actions form-group">
+                                        <button type="submit" class="btn btn-success btn-sm" id="btn-submit-add">Submit</button>
+                                    </div>
                                   </form>
                                 </div>
                               </div>
@@ -114,5 +127,47 @@
         $(document).ready(function() {
           $('#bootstrap-data-table-export').DataTable();
         } );
+    </script>
+    <script type="text/javascript">
+
+        var offset = new Date().getTimezoneOffset();
+        var o  = Math.abs(offset)
+        var offset = (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2);
+
+        $( document ).ready(function() {
+           
+
+            
+           $('#btn-submit-add').on('click',function(e){
+                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                var email = $('#email').val();
+                var username = $('#username').val();
+                var password = $('#password').val();
+                var role = $('#selectRole').val();
+                var href = window.location.origin;
+                e.preventDefault();
+
+                jQuery.ajax({
+                    url: href+'/admin/registerStaff',
+                    method:'post',
+                    data: {
+                        _token: CSRF_TOKEN,
+                        email:email,
+                        username:username,
+                        password:password,
+                        role:role,
+                        timezone:offset
+                    },
+                    dataType: 'JSON',
+                    success:function(res){
+
+                        $('#mediumModal').modal('hide');
+                        console.log(res.message);
+                    }
+                });
+               
+           });
+        });
+        
     </script>
 @endsection
